@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="hero">
+
+        <h1>KNAPSACK 0/1 SOLVER</h1>
+
+        <p>
+            Backtracking DFS & Branch and Bound
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <form action="/solve" method="POST">
+
+            <div class="input-group">
+
+                <label>
+                    Kapasitas Knapsack (W)
+                </label>
+
+                <input
+                    type="number"
+                    name="capacity"
+                    min="0"
+                    required>
+
+            </div>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Barang</th>
+                        <th>Berat (w)</th>
+                        <th>Profit (p)</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for i in range(8) %}
+
+                    <tr>
+
+                        <td>{{ i + 1 }}</td>
+
+                        <td>
+                            <input
+                                type="text"
+                                name="nama{{ i }}"
+                                placeholder="Barang {{ i + 1 }}"
+                                required>
+                        </td>
+
+                        <td>
+                            <input
+                                type="number"
+                                name="berat{{ i }}"
+                                min="1"
+                                placeholder="w{{ i + 1 }}"
+                                required>
+                        </td>
+
+                        <td>
+                            <input
+                                type="number"
+                                name="profit{{ i }}"
+                                min="0"
+                                placeholder="p{{ i + 1 }}"
+                                required>
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+            <button type="submit">
+                Jalankan Algoritma
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
