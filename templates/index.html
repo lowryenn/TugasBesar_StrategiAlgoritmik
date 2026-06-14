@@ -4,96 +4,117 @@
 
 <div class="container">
 
-    <div class="hero">
+```
+<div class="hero">
 
-        <h1>KNAPSACK 0/1 SOLVER</h1>
+    <h1>KNAPSACK 0/1 SOLVER</h1>
 
-        <p>
-            Backtracking DFS & Branch and Bound
-        </p>
+    <p>
+        Backtracking DFS & Branch and Bound
+    </p>
 
+</div>
+
+<div class="card">
+
+    {% if error %}
+    <div class="error-message">
+        {{ error }}
     </div>
+    {% endif %}
 
-    <div class="card">
+    <form action="/solve" method="POST">
 
-        <form action="/solve" method="POST">
+        <div class="input-group">
 
-            <div class="input-group">
+            <label>
+                Kapasitas Knapsack (W)
+            </label>
 
-                <label>
-                    Kapasitas Knapsack (W)
-                </label>
+            <input
+                type="number"
+                name="capacity"
+                min="1"
+                placeholder="Masukkan kapasitas knapsack"
+                required>
 
-                <input
-                    type="number"
-                    name="capacity"
-                    min="0"
-                    required>
+        </div>
 
-            </div>
+        <div class="info-alert">
+   
+    <span class="info-text">Maksimal 8 barang. Kosongkan baris yang tidak digunakan.</span>
+</div>
 
-            <table>
+        <table>
 
-                <thead>
+            <thead>
 
-                    <tr>
-                        <th>No</th>
-                        <th>Nama Barang</th>
-                        <th>Berat (w)</th>
-                        <th>Profit (p)</th>
-                    </tr>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Barang</th>
+                    <th>Berat (w)</th>
+                    <th>Profit (p)</th>
+                </tr>
 
-                </thead>
+            </thead>
 
-                <tbody>
+            <tbody>
 
-                    {% for i in range(8) %}
+                {% for i in range(8) %}
 
-                    <tr>
+                <tr>
 
-                        <td>{{ i + 1 }}</td>
+                    <td>
+                        {{ i + 1 }}
+                    </td>
 
-                        <td>
-                            <input
-                                type="text"
-                                name="nama{{ i }}"
-                                placeholder="Barang {{ i + 1 }}"
-                                required>
-                        </td>
+                    <td>
 
-                        <td>
-                            <input
-                                type="number"
-                                name="berat{{ i }}"
-                                min="1"
-                                placeholder="w{{ i + 1 }}"
-                                required>
-                        </td>
+                        <input
+                            type="text"
+                            name="nama{{ i }}"
+                            placeholder="Barang {{ i + 1 }}">
 
-                        <td>
-                            <input
-                                type="number"
-                                name="profit{{ i }}"
-                                min="0"
-                                placeholder="p{{ i + 1 }}"
-                                required>
-                        </td>
+                    </td>
 
-                    </tr>
+                    <td>
 
-                    {% endfor %}
+                        <input
+                            type="number"
+                            name="berat{{ i }}"
+                            min="1"
+                            placeholder="w{{ i + 1 }}">
 
-                </tbody>
+                    </td>
 
-            </table>
+                    <td>
 
-            <button type="submit">
-                Jalankan Algoritma
-            </button>
+                        <input
+                            type="number"
+                            name="profit{{ i }}"
+                            min="0"
+                            placeholder="p{{ i + 1 }}">
 
-        </form>
+                    </td>
 
-    </div>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+        <button type="submit">
+
+            Jalankan Algoritma
+
+        </button>
+
+    </form>
+
+</div>
+```
 
 </div>
 
